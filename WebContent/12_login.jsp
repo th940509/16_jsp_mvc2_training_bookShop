@@ -7,7 +7,7 @@
 <script>
 	$(document).ready(function(){
 		$("#uRes").click(function(){//[회원가입]버튼 클릭
-			window.location.href="${contextPath}/register.do";
+			window.location.href="${contextPath}/register.do"; // location.href와 동일
 		});
 		
 		$("#uLogin").click(function(){//[로그인]버튼 클릭

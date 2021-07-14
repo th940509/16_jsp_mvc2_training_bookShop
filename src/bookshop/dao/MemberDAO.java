@@ -95,8 +95,8 @@ public class MemberDAO {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 
-			if (rs.next())	x = 1; 
-			else			x = -1;
+			if (rs.next())	x = 1; // rs.next가 있으면  1대입 (중복아이디가 있을 경우)
+			else			x = -1; // 없으면 -1
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -104,7 +104,7 @@ public class MemberDAO {
 			if (pstmt != null) try {pstmt.close();} catch (SQLException e) {}
 			if (conn != null)  try {conn.close();}  catch (SQLException e) {}
 		}
-		return x;
+		return x; // x값 반환
 	}
 
 	

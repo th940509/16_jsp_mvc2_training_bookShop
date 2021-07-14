@@ -3,12 +3,12 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <link rel="stylesheet" href="${contextPath}/css/style.css"/>
-<script src="${contextPath}/js/jquery-3.5.1.min.js"></script>
+<script src="${contextPath}/js/jquery-3.5.1.min.js"></script> <!-- jQuery태그 -->
 <script>
-	$(document).ready(function(){
+	$(document).ready(function(){ // dom 요소 실행 후 실행되는 함수
 		//[로그인]버튼을 클릭하면 자동실행	
-		$("#login").click(function(){
-			var query = {id : $("#id").val(), 
+		$("#login").click(function(){ // id가 로그인 인것을 클릭하면 실행되는 함수
+			var query = {id : $("#id").val(), // JSON 표현식 사용
 					     passwd:$("#passwd").val()};
 			  
 			$.ajax({
@@ -39,7 +39,7 @@
 	 });
 </script>
 
-<c:if test="${empty sessionScope.id}">
+<c:if test="${empty sessionScope.id}"> <!-- 세션 id가 없을 때 (로그인중이 아닐떄)-->
   <div id="status">
      <ul>
         <li><label for="id">아이디</label>

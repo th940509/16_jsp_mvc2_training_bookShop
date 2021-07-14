@@ -11,7 +11,7 @@ import bookshop.controller.CommandAction;
 import bookshop.dao.ManagerDAO;
 
 public class _11_ShopMain implements CommandAction {
-
+                  // interface CommandAction를 implements로 구현
 	@Override
 	public String requestPro(HttpServletRequest request,HttpServletResponse response) throws Throwable {
 			

@@ -7,16 +7,17 @@
 <script>
 	$(document).ready(function(){
 		$("#checkId").click(function(){//[ID중복확인]버튼 클릭
-		  if($("#id").val()){
-			var query = {id:$("#id").val()};
+		  if($("#id").val()){ // id가 id인것의 value 값이 있을때 즉, 아이디를 입력했을때  ex)id에 qwer을 입력했을 경우
+			var query = {id:$("#id").val()}; // JSON 표현식 / query 변수에 qwer(id:$("#id").val()) 대입
 			
 		    $.ajax({
-		    	type:"post",
-		    	url:"${contextPath}/confirmId.do",
-		    	data:query,
-		    	success:function(data){
-		    		var str1 = '<p id="ck">';
-		    		var loc = data.indexOf(str1);
+		    	type:"post",                         // 보내는 타입
+		    	url:"${contextPath}/confirmId.do",   // 전송이 될 주소
+		    	data:query,                          // 보내는 데이터
+		    	success:function(data){              // 전송 성공 시 실행되는 함수
+		    		alert('data load ' + data);
+		    		var str1 = '<p id="ck">'; // 
+		    		var loc = data.indexOf(str1); // indexOf 함수로 data(에서 -1 찾기 
 		    		var len = str1.length;
 		    		var check = data.substr(loc+len,1);
 		    		if(check == "1"){//사용할 수 없는 아이디

@@ -15,6 +15,8 @@ public class _05_BookList implements CommandAction{
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
 		List<ManagerDTO> bookList = null;
+		// List<자료형 또는 클래스> _list = new List<자료형 또는 클래스>();
+		// bookList 
 		String book_kind = request.getParameter("book_kind");
 		int count = 0;
 		

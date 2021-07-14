@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> <!-- jstl 태그(형식화) -->
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <link rel="stylesheet" href="${contextPath}/css/style.css"/>
@@ -27,7 +27,7 @@
       <c:set var="book_kindName" value="컴퓨터"/>
     </c:if>
     <p class="b">[${book_kindName}] 분류의 신간목록:<a href="${contextPath}/list.do?book_kind=${book_kind}">더보기</a></p>
-    <c:forEach var="book" items="${bookList}">
+    <c:forEach var="book" items="${bookList}"><c:out value="${contextPath}"/> 
      <table class="vhcenter">
       <tr height="30"> 
         <td rowspan="4"  width="100">

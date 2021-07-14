@@ -59,7 +59,7 @@ public class Controller extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private Map<String, Object> commandMap = new HashMap<String, Object>();  
+	private Map<String, Object> commandMap = new HashMap<String, Object>();  //hashmap생성
 	
 	public void init() throws ServletException {
 		
@@ -120,29 +120,32 @@ public class Controller extends HttpServlet {
 		
 		try {
 			
-			// 1. 접근 URL을 읽어온다.    /16_jsp_mvc2_training_bookShop/index.do
+			// 1. 접근 URL을 읽어온다.   ->  /16_jsp_mvc2_training_bookShop/index.do
+			// request.getRequestURI() : 프로젝트 + 파일경로 가져오기
 			String command = request.getRequestURI();
-			//System.out.println("최초 command : " + command);					
+			// System.out.println("최초 command : " + command);		
+			// request.getContextPath() 프로젝트의 Path만 가지고 옴. -> /16_jsp_mvc2_training_bookShop
+			// string.indexOf(찾을 문자, 시작할 위치) *시작할 위치는 생략 가능
+			// command(/16_jsp_mvc2_training_bookShop/index.do)에서 (/16_jsp_mvc2_training_bookShop) 문자열을  찾았을 때의 값이 0일 경우(0번째 자리)
 	        if (command.indexOf(request.getContextPath()) == 0) { 
-	        	
 	           // 2. *.do 앞의 url을 제거하여 map의 키 값과 같은 url형태로 파싱한다.	// /index.do
-	           command = command.substring(request.getContextPath().length());			// /16_jsp_mvc2_training_bookShop 
-	           //System.out.println("getContextPath : " + request.getContextPath());  
-	           //System.out.println("substring 이후  command : " + command);			
+	           command = command.substring(request.getContextPath().length()); // /16_jsp_mvc2_training_bookShop.length()부터 자르기 -> /index.do
+	          // System.out.println("getContextPath : " + request.getContextPath());  
+	          // System.out.println("substring 이후  command : " + command);			
 	        }
 	        // 3. 2에서 얻은 url로 해당 클래스의 객체를 생성한다. 						// bookshop.command._11_ShopMain@4cb3b4f0
-	        com = (CommandAction)commandMap.get(command);
-	        //System.out.println("com : " + com);									
+	        com = (CommandAction)commandMap.get(command); //CommandAction com = (CommandAction) new _11_ShopMain()
+	        System.out.println("com : " + com);									
 	        // 4. 3에서 얻은 클래스의 requestPro메서드를 호출하여 클래스의 url의 return값인 jsp파일명을 얻어온다.   /11_shopMain.jsp
 	        view = com.requestPro(request, response);							
-	        //System.out.println("view : " + view);								
-	        //System.out.println();
+	        System.out.println("view : " + view);								
+	        // System.out.println();
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("cont",view);
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("/00_index.jsp");
+		request.setAttribute("cont",view); // view값을 cont에 세팅(/11_shopMain.jsp)
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("/00_index.jsp"); // 00_index.jsp로 연결
 		dispatcher.forward(request, response);
 		
 	}
