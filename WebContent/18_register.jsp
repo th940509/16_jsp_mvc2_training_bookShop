@@ -12,7 +12,7 @@
 			
 		    $.ajax({
 		    	type:"post",                         // 보내는 타입
-		    	url:"${contextPath}/confirmId.do",   // 전송이 될 주소
+		    	url:"${contextPath}/confirm.do",     // 전송이 될 주소
 		    	data:query,                          // 보내는 데이터
 		    	success:function(data){              // 전송 성공 시 실행되는 함수
 		    		console.log('data' + data);
