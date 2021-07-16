@@ -5,4 +5,4 @@
 <link rel="stylesheet" href="${contextPath}/css/style.css"/>
 <script src="${contextPath}/js/jquery-3.5.1.min.js"></script>
 
-<p id="ck">${check}
+<p id="ck">${check} 

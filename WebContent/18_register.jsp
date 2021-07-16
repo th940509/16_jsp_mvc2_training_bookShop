@@ -15,11 +15,15 @@
 		    	url:"${contextPath}/confirmId.do",   // 전송이 될 주소
 		    	data:query,                          // 보내는 데이터
 		    	success:function(data){              // 전송 성공 시 실행되는 함수
-		    		alert('data load ' + data);
+		    		console.log('data' + data);
 		    		var str1 = '<p id="ck">'; // 
+		    		console.log('str1:' + str1);
 		    		var loc = data.indexOf(str1); // indexOf 함수로 data(에서 -1 찾기 
+		    		console.log('loc:' + loc);
 		    		var len = str1.length;
+		    		console.log('len:' + len);
 		    		var check = data.substr(loc+len,1);
+		    		console.log('check:' + check);
 		    		if(check == "1"){//사용할 수 없는 아이디
 		    			alert("사용할 수 없는 아이디");
 		    	    	$("#id").val("");

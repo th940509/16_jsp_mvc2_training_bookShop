@@ -16,7 +16,7 @@ public class _20_Confirm implements CommandAction {
 		String id = request.getParameter("id"); // 18_register.jsp에서 ajax로 받아온 id 
 		  
 		MemberDAO manager = MemberDAO.getInstance();
-		int check= manager.confirm(id); // check에 반환된 x값 대입
+		int check= manager.confirm(id); // check에 반환된 x값 대입 (중복이 아닐 시 -1)
 		
 		request.setAttribute("check", new Integer(check)); // check 값 지정
 		                                 // 래퍼클래스
